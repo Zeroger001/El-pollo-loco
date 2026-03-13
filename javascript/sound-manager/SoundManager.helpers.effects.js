@@ -24,7 +24,9 @@ function playEndbossEffect(manager, audio) {
     }
     manager.currentEndbossSound = audio;
     audio.currentTime = 0;
-    audio.play?.();
+    audio.play?.().catch((err) => {
+        console.warn("Audio playback interrupted:", err);
+    });
 }
 
 /**
@@ -38,7 +40,9 @@ function playClonedEffect(audio, muted, duration) {
     clone.volume = audio.volume;
     clone.muted = muted;
     clone.currentTime = 0;
-    clone.play?.();
+    clone.play?.().catch((err) => {
+        console.warn("Audio playback interrupted:", err);
+    });
 
     clone.onended = () => {
         clone.src = "";

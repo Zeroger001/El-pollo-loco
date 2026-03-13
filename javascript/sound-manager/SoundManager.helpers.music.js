@@ -64,11 +64,15 @@ function updateMuteButtonUI(muted) {
 function playMusicLoop(manager, audio) {
     manager.musicLoopActive = true;
     audio.currentTime = 0;
-    audio.play?.();
+    audio.play?.().catch((err) => {
+        console.warn("Audio playback interrupted:", err);
+    });
     audio.onended = () => {
         if (manager.musicLoopActive) {
             audio.currentTime = 0;
-            audio.play?.();
+            audio.play?.().catch((err) => {
+                console.warn("Audio playback interrupted:", err);
+            });
         }
     };
 }
@@ -90,7 +94,9 @@ function startBossMusic(manager) {
     audio.loop = true;
     audio.volume = manager.masterVolume * 0.5;
     audio.currentTime = 0;
-    audio.play?.();
+    audio.play?.().catch((err) => {
+        console.warn("Audio playback interrupted:", err);
+    });
 }
 
 /**
