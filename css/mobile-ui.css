@@ -1,0 +1,155 @@
+/* =========================================================
+   GAME CONTAINER
+   ========================================================= */
+
+#game-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* =========================================================
+   MOBILE / TOUCH CONTROLS
+   ========================================================= */
+
+#mobile-controls {
+    position: absolute;
+    inset: 0;
+    z-index: 400;
+    display: none;
+    pointer-events: none;
+}
+
+/* =========================================================
+   TOP CENTER HUD (Pause / Mute)
+   ========================================================= */
+
+#game-hud {
+    position: absolute;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+    gap: 16px;
+    z-index: 500;
+    pointer-events: auto;
+}
+
+body.game-running #game-hud {
+    display: flex;
+}
+
+/* =========================================================
+   FULLSCREEN BUTTON (BASE STATE)
+   ========================================================= */
+
+#fullscreen-btn-html {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: none;
+    pointer-events: auto;
+}
+
+/* =========================================================
+   MOVEMENT / ACTION CONTROLS
+   ========================================================= */
+
+.control-left,
+.control-right {
+    position: absolute;
+    bottom: 12px;
+    display: flex;
+    gap: 16px;
+    pointer-events: auto;
+}
+
+.control-left {
+    left: 12px;
+}
+
+.control-right {
+    right: 12px;
+}
+
+/* =========================================================
+   BUTTON STYLE (GLOBAL)
+   ========================================================= */
+
+.btn-control,
+.btn-action,
+.hud-btn {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(0, 0, 0, 0.45);
+    color: white;
+    font-size: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    pointer-events: auto;
+    touch-action: manipulation;
+
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(4px);
+}
+
+#game-hud .hud-btn {
+    width: 54px;
+    height: 54px;
+    font-size: 24px;
+}
+
+/* =========================================================
+   GAME OVER UI
+   ========================================================= */
+
+#gameover-ui {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 20px;
+    padding-bottom: 40px;
+    pointer-events: auto;
+}
+
+#gameover-ui.hidden {
+    display: none;
+}
+
+/* =========================================================
+   GAME OVER BUTTON ANIMATION
+   ========================================================= */
+
+.gameover-btn {
+    opacity: 0;
+    min-height: 45px;
+    min-width: 90px;
+    border-radius: 10px;
+    border: none;
+    background-color: #ffaa00;
+    cursor: pointer;
+    font-size: 24px;
+    transform: translateY(30px) scale(0.6) rotate(-180deg);
+    transition:
+        opacity 0.6s ease-out,
+        transform 1.5s cubic-bezier(0.22, 1.25, 0.36, 1);
+}
+
+.gameover-btn:hover {
+    background-color: #ffcc00;
+    border: 1px solid #fff;
+}
+
+.gameover-btn.show {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(0deg);
+    z-index: 1000;
+}
