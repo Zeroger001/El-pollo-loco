@@ -9,7 +9,7 @@ The project includes responsive controls, sound management, collision handling a
 
 ## 🚀 Live Demo
 
-👉 [Live Demo](https://zeroger001.github.io/el-pollo-loco/)
+👉 [Live Demo](https://zeroger001.github.io/El-pollo-loco/)
 
 ---
 
